@@ -1,12 +1,15 @@
 package com.example.geoquiz;
 
+import android.animation.Animator;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewAnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -41,27 +44,20 @@ public class CheatActivity extends AppCompatActivity {
         mAnswerTextView=(TextView) findViewById(R.id.show_answer_button);
 
         mShowAnswer = (Button) findViewById(R.id.show_answer_button);
-        mShowAnswer.setOnClickListener(new View.OnClickListener(){
+        mShowAnswer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mAnswerIsTrue){
+                if (mAnswerIsTrue) {
                     mAnswerTextView.setText(R.string.true_button);
-                }else {
+                } else {
                     mAnswerTextView.setText(R.string.false_button);
                 }
-
                 setAnswerShownResult(true);
-            }
-        });
-    }
 
 
-    private void setAnswerShownResult(boolean isAnswerShown){
-        Intent data = new Intent();
-        data.putExtra(EXTRA_ANSWER_SHOWN, isAnswerShown);
-        setResult(RESULT_OK,data);
-    }
+                private void setAnswerShownResult ( boolean isAnswerShown){
+                    Intent data = new Intent();
+                    data.putExtra(EXTRA_ANSWER_SHOWN, isAnswerShown);
+                    setResult(RESULT_OK, data);
+                
 
-
-
-}
